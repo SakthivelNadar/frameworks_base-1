@@ -5960,6 +5960,16 @@ public final class Settings {
                 BOOLEAN_VALIDATOR;
 
         /**
+         * Force expanded notifications on all apps that support it.
+         * @hide
+         */
+        public static final String FORCE_EXPANDED_NOTIFICATIONS = "force_expanded_notifications";
+
+        /** @hide */
+        private static final Validator FORCE_EXPANDED_NOTIFICATIONS_VALIDATOR =
+                BOOLEAN_VALIDATOR;
+
+        /**
          * Settings to backup. This is here so that it's in the same place as the settings
          * keys and easy to update.
          *
@@ -6050,6 +6060,7 @@ public final class Settings {
             OMNI_STATUS_BAR_CUSTOM_HEADER_IMAGE,
             OMNI_STATUS_BAR_FILE_HEADER_IMAGE,
             NOTIFICATION_HEADERS,
+            FORCE_EXPANDED_NOTIFICATIONS,
         };
 
         /**
@@ -6507,6 +6518,7 @@ public final class Settings {
             VALIDATORS.put(NETWORK_TRAFFIC_UNITS, NETWORK_TRAFFIC_UNITS_VALIDATOR);
             VALIDATORS.put(NOTIFICATION_HEADERS, NOTIFICATION_HEADERS_VALIDATOR);
             VALIDATORS.put(LOCKSCREEN_TRANSLUCENT_NOTIFICATIONS_BG_ENABLED, LOCKSCREEN_TRANSLUCENT_NOTIFICATIONS_BG_ENABLED_VALIDATOR);
+            VALIDATORS.put(FORCE_EXPANDED_NOTIFICATIONS, FORCE_EXPANDED_NOTIFICATIONS_VALIDATOR);
         }
 
         /**
