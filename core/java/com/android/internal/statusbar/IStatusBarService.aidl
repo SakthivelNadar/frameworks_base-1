@@ -120,4 +120,5 @@ interface IStatusBarService
      * Havoc
      */
     void toggleCameraFlash();
+    void restartUI();
 }

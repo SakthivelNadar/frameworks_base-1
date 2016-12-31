@@ -200,7 +200,6 @@ public class QSContainerImpl extends FrameLayout implements
         mSetQsFromResources = userQsFwSetting == 1;
         mSetQsFromAccent = Settings.System.getIntForUser(getContext().getContentResolver(),
                     Settings.System.QS_PANEL_BG_USE_ACCENT, 0, UserHandle.USER_CURRENT) == 1;
-        mQsBackGroundAlpha = Settings.System.getIntForUser(resolver,
         int mQsBackGroundAlpha = Settings.System.getIntForUser(resolver,
                 Settings.System.QS_PANEL_BG_ALPHA, 255,
                 UserHandle.USER_CURRENT);
