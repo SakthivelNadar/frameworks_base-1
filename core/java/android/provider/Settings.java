@@ -5374,6 +5374,16 @@ public final class Settings {
                 BOOLEAN_VALIDATOR;
 
         /**
+         * Whether to allow battery light
+         * @hide
+         */
+        public static final String BATTERY_LIGHT_ENABLED = "battery_light_enabled";
+
+        /** @hide */
+        public static final Validator BATTERY_LIGHT_ENABLED_VALIDATOR =
+                BOOLEAN_VALIDATOR;
+
+        /**
          * IMPORTANT: If you add a new public settings you also have to add it to
          * PUBLIC_SETTINGS below. If the new setting is hidden you have to add
          * it to PRIVATE_SETTINGS below. Also add a validator that can validate
@@ -6185,6 +6195,7 @@ public final class Settings {
             PRIVATE_SETTINGS.add(USE_OLD_MOBILETYPE);
             PRIVATE_SETTINGS.add(VOLTE_ICON_STYLE);
             PRIVATE_SETTINGS.add(QS_PANEL_BG_USE_NEW_TINT);
+            PRIVATE_SETTINGS.add(BATTERY_LIGHT_ENABLED);
         }
 
         /**
@@ -6392,6 +6403,7 @@ public final class Settings {
             VALIDATORS.put(ATOM_FOOTER_TEXT_SHOW, ATOM_FOOTER_TEXT_SHOW_VALIDATOR);
             VALIDATORS.put(ATOM_FOOTER_TEXT_STRING, ATOM_FOOTER_TEXT_STRING_VALIDATOR);
             VALIDATORS.put(LOCKSCREEN_CHARGING_ANIMATION_STYLE, LOCKSCREEN_CHARGING_ANIMATION_STYLE_VALIDATOR);
+            VALIDATORS.put(BATTERY_LIGHT_ENABLED, BATTERY_LIGHT_ENABLED_VALIDATOR);
         }
 
         /**

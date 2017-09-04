@@ -812,6 +812,8 @@ public class CommandQueue extends IStatusBar.Stub implements CallbackController<
         synchronized (mLock) {
             mHandler.removeMessages(MSG_SET_BLOCKED_GESTURAL_NAVIGATION);
             mHandler.obtainMessage(MSG_SET_BLOCKED_GESTURAL_NAVIGATION, blocked).sendToTarget();
+        }
+    }
 
    @Override
     public void toggleCameraFlash() {
