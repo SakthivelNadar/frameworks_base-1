@@ -146,6 +146,7 @@ public class KeyguardStatusView extends GridLayout implements
             mKeyguardSlice.refreshdatesize();
             refreshOwnerInfoSize();
             refreshOwnerInfoFont();
+            updateSettings();
         }
 
         @Override
