@@ -110,6 +110,8 @@ public class MobileSignalController extends SignalController<
     private int mCallState = TelephonyManager.CALL_STATE_IDLE;
 
     private boolean mDataDisabledIcon;
+    // Volte Icon
+    private boolean mVoLTEicon;
 
     // TODO: Reduce number of vars passed in, if we have the NetworkController, probably don't
     // need listener lists anymore.
@@ -192,6 +194,9 @@ public class MobileSignalController extends SignalController<
            resolver.registerContentObserver(
                     Settings.System.getUriFor(Settings.System.DATA_DISABLED_ICON), false,
                     this, UserHandle.USER_ALL);
+           resolver.registerContentObserver(Settings.System.getUriFor(
+                  Settings.System.SHOW_VOLTE_ICON),
+                  false, this, UserHandle.USER_ALL);
            updateSettings();
         }
 
@@ -212,6 +217,12 @@ public class MobileSignalController extends SignalController<
         mDataDisabledIcon = Settings.System.getIntForUser(resolver,
                 Settings.System.DATA_DISABLED_ICON, 1,
                 UserHandle.USER_CURRENT) == 1;
+       } else if (uri.equals(Settings.System.getUriFor(
+                    Settings.System.SHOW_VOLTE_ICON))) {
+                    mVoLTEicon = Settings.System.getIntForUser(
+                            mContext.getContentResolver(),
+                            Settings.System.SHOW_VOLTE_ICON,
+                            0, UserHandle.USER_CURRENT) == 1;
         mapIconSets();
         updateTelephony();
    }
@@ -400,7 +411,7 @@ public class MobileSignalController extends SignalController<
         int resId = 0;
 
         if ( (mCurrentState.voiceCapable || mCurrentState.videoCapable)
-                &&  mCurrentState.imsRegistered ) {
+                &&  mCurrentState.imsRegistered && mVoLTEicon) {
             resId = R.drawable.ic_volte;
         }
         return resId;
