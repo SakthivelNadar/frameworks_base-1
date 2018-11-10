@@ -3739,6 +3739,20 @@ public class StatusBar extends SystemUI implements DemoMode,
         ThemesUtils.stockSwitchStyle(mOverlayManager, mLockscreenUserManager.getCurrentUserId());
     }
 
+    // Switches notification style from stock to custom
+    public void updateNotificationStyle() {
+         int notificationStyle = Settings.System.getIntForUser(mContext.getContentResolver(),
+                 Settings.System.NOTIFICATION_STYLE, 0, mLockscreenUserManager.getCurrentUserId());
+        ThemesUtils.updateNotificationStyle(mOverlayManager, mLockscreenUserManager.getCurrentUserId(), notificationStyle);
+    }
+
+    // Unload all notification styles back to stock
+    public void stockNotificationStyle() {
+        ThemesUtils.stockNotificationStyle(mOverlayManager, mLockscreenUserManager.getCurrentUserId());
+    }
+
+
+
     private void updateQSPanel() {
         int userQsWallColorSetting = Settings.System.getIntForUser(mContext.getContentResolver(),
                     Settings.System.QS_PANEL_BG_USE_WALL, 0, UserHandle.USER_CURRENT);
@@ -5167,6 +5181,9 @@ public class StatusBar extends SystemUI implements DemoMode,
             resolver.registerContentObserver(Settings.System.getUriFor(
 	            Settings.System.QS_PANEL_BG_USE_ACCENT),
 	            false, this, UserHandle.USER_ALL);
+            resolver.registerContentObserver(Settings.System.getUriFor(
+                    Settings.System.NOTIFICATION_STYLE),
+                    false, this, UserHandle.USER_ALL);
         }
 
         @Override
@@ -5206,6 +5223,10 @@ public class StatusBar extends SystemUI implements DemoMode,
                     Settings.System.SWITCH_STYLE))) {
                 stockSwitchStyle();
                 updateSwitchStyle();
+            } else if (uri.equals(Settings.System.getUriFor(
+                    Settings.System.NOTIFICATION_STYLE))) {
+                stockNotificationStyle();
+                updateNotificationStyle();
             } else if (uri.equals(Settings.Secure.getUriFor(Settings.Secure.LOCKSCREEN_CLOCK_SELECTION))||
             uri.equals(Settings.Secure.getUriFor(Settings.Secure.LOCKSCREEN_DATE_SELECTION))) {
             }
@@ -5289,5 +5310,3 @@ public class StatusBar extends SystemUI implements DemoMode,
     }
 
 }
-
-
