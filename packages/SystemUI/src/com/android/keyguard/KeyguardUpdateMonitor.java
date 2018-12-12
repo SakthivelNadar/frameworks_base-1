@@ -1753,7 +1753,7 @@ public class KeyguardUpdateMonitor implements TrustManager.TrustListener {
                     (mBouncer && !mKeyguardGoingAway) || mGoingToSleep ||
                     shouldListenForFingerprintAssistant() || (mKeyguardOccluded && mIsDreaming))
                     && !mSwitchingUser && !isFingerprintDisabled(getCurrentUser())
-                    && (!mKeyguardGoingAway || !mDeviceInteractive) && mIsPrimaryUser && !mIsDeviceInPocket;
+                    && (!mKeyguardGoingAway || !mDeviceInteractive) && mIsPrimaryUser;
         }
     }
 
