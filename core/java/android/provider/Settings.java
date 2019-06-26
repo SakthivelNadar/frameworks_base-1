@@ -5750,11 +5750,6 @@ public final class Settings {
         public static final String SMART_CHARGING = "smart_charging";
 
         /**
-         * @hide
-         */
-        public static final String SMART_CHARGING_LEVEL = "smart_charging_level";
-
-        /**
          * Change volume up and down handlign based on rotation
          * @hide
          */
@@ -5937,6 +5932,13 @@ public final class Settings {
 
         private static final Validator OMNI_STATUS_BAR_FILE_HEADER_IMAGE_VALIDATOR =
                 ANY_STRING_VALIDATOR;
+
+        public static final String SMART_CHARGING_RESET_STATS = "smart_charging_reset_stats";
+
+        /**
+         * @hide
+         */
+        public static final String SMART_CHARGING_LEVEL = "smart_charging_level";
 
         /**
          * @hide
