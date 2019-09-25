@@ -5505,6 +5505,13 @@ public final class Settings {
         public static final Validator LIVE_DISPLAY_HINTED_VALIDATOR =
                 new SettingsValidators.InclusiveIntegerRangeValidator(-3, 1);
 
+        /** @hide */
+        public static final String BACK_GESTURE_HEIGHT = "back_gesture_height";
+
+        /** @hide */
+        private static final Validator BACK_GESTURE_HEIGHT_VALIDATOR =
+                ANY_INTEGER_VALIDATOR;
+
         /**
          * Whether to enable Ambient edge light
          * @hide
@@ -6003,6 +6010,7 @@ public final class Settings {
             PRIVATE_SETTINGS.add(QS_BLUR_ALPHA);
             PRIVATE_SETTINGS.add(HIDE_SMART_REPLIES);
             PRIVATE_SETTINGS.add(HEADSET_CONNECT_PLAYER);
+            PRIVATE_SETTINGS.add(BACK_GESTURE_HEIGHT);
         }
 
         /**
@@ -6198,6 +6206,7 @@ public final class Settings {
             VALIDATORS.put(QS_BLUR_ALPHA, QS_BLUR_ALPHA_VALIDATOR);
             VALIDATORS.put(HIDE_SMART_REPLIES, HIDE_SMART_REPLIES_VALIDATOR);
             VALIDATORS.put(HEADSET_CONNECT_PLAYER, HEADSET_CONNECT_PLAYER_VALIDATOR);
+            VALIDATORS.put(BACK_GESTURE_HEIGHT, BACK_GESTURE_HEIGHT_VALIDATOR);
         }
 
         /**
