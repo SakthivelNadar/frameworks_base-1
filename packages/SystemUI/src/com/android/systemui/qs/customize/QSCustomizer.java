@@ -118,7 +118,12 @@ public class QSCustomizer extends LinearLayout implements OnMenuItemClickListene
         mRecyclerView = findViewById(android.R.id.list);
         mTransparentView = findViewById(R.id.customizer_transparent_view);
         mTileAdapter = new TileAdapter(getContext());
+        int qsFooterValue = Settings.System.getIntForUser(mContext.getContentResolver(),
+                Settings.System.ATOM_FOOTER_TEXT_SHOW, 0,
+                UserHandle.USER_CURRENT);
         mTileQueryHelper = new TileQueryHelper(context, mTileAdapter);
+        MenuItem qsFooterText = mToolbar.getMenu().findItem(R.id.footer_text);
+        qsFooterText.setChecked(qsFooterValue == 1);
         mRecyclerView.setAdapter(mTileAdapter);
         mTileAdapter.getItemTouchHelper().attachToRecyclerView(mRecyclerView);
         mGlm = new GridLayoutManager(getContext(), mDefaultColumns);
@@ -152,6 +157,11 @@ public class QSCustomizer extends LinearLayout implements OnMenuItemClickListene
             columns = Settings.System.getIntForUser(mContext.getContentResolver(),
                     Settings.System.QS_COLUMNS_PORTRAIT, mDefaultColumns,
                     UserHandle.USER_CURRENT);
+        } else if (id == R.id.footer_text) {
+            item.setChecked(!item.isChecked());
+            Settings.System.putIntForUser(mContext.getContentResolver(),
+                   Settings.System.ATOM_FOOTER_TEXT_SHOW, item.isChecked() ? 1 : 0,
+                   UserHandle.USER_CURRENT);
         } else {
             columns = Settings.System.getIntForUser(mContext.getContentResolver(),
                     Settings.System.QS_COLUMNS_LANDSCAPE, mDefaultColumns,
@@ -381,3 +391,4 @@ public class QSCustomizer extends LinearLayout implements OnMenuItemClickListene
         }
     };
 }
+

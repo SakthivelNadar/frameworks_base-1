@@ -38,4 +38,6 @@
     <!-- Alerting notification header label -->
     <string name="notification_section_header_alerting">Alerting notifications</string>
 
+    <string name="qs_footer_text">Footer text</string>
+
 </resources>

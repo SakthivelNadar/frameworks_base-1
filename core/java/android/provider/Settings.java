@@ -5841,6 +5841,15 @@ public final class Settings {
         public static final String POCKET_JUDGE_ALLOW_FP = "pocket_judge_allow_fp";
 
         /**
+         * Whether footer #Atom text shows
+         * @hide
+         */
+        public static final String ATOM_FOOTER_TEXT_SHOW = "atom_footer_text_show";
+         /** @hide */
+        private static final Validator ATOM_FOOTER_TEXT_SHOW_VALIDATOR =
+                BOOLEAN_VALIDATOR;
+
+        /**
          * Settings to backup. This is here so that it's in the same place as the settings
          * keys and easy to update.
          *
@@ -5921,6 +5930,7 @@ public final class Settings {
             FOD_RECOGNIZING_ANIMATION,
             FOD_ANIM,
             QS_PANEL_BG_USE_NEW_TINT,
+            ATOM_FOOTER_TEXT_SHOW,
         };
 
         /**
@@ -6359,6 +6369,7 @@ public final class Settings {
             VALIDATORS.put(FOD_RECOGNIZING_ANIMATION, FOD_RECOGNIZING_ANIMATION_VALIDATOR);
             VALIDATORS.put(FOD_ANIM, FOD_ANIM_VALIDATOR);
             VALIDATORS.put(QS_PANEL_BG_USE_NEW_TINT, QS_PANEL_BG_USE_NEW_TINT_VALIDATOR);
+            VALIDATORS.put(ATOM_FOOTER_TEXT_SHOW, ATOM_FOOTER_TEXT_SHOW_VALIDATOR);
         }
 
         /**
