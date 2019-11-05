@@ -89,6 +89,7 @@ public class QSCustomizer extends LinearLayout implements OnMenuItemClickListene
     private boolean mIsShowingNavBackdrop;
     private GridLayoutManager mGlm;
     private int mDefaultColumns;
+    private boolean mHeaderImageEnabled;
 
     @Inject
     public QSCustomizer(Context context, AttributeSet attrs,
@@ -146,6 +147,10 @@ public class QSCustomizer extends LinearLayout implements OnMenuItemClickListene
         LayoutParams lp = (LayoutParams) mTransparentView.getLayoutParams();
         lp.height = mContext.getResources().getDimensionPixelSize(
                 com.android.internal.R.dimen.quick_qs_offset_height);
+        if (mHeaderImageEnabled) {
+            lp.height += mContext.getResources().getDimensionPixelSize(
+                    R.dimen.qs_header_image_offset);
+        }
         mTransparentView.setLayoutParams(lp);
         int columns;
         if (mContext.getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
@@ -162,6 +167,9 @@ public class QSCustomizer extends LinearLayout implements OnMenuItemClickListene
         }
         mTileAdapter.setColumns(columns);
         mGlm.setSpanCount(columns);
+        mHeaderImageEnabled = Settings.System.getIntForUser(mContext.getContentResolver(),
+		Settings.System.OMNI_STATUS_BAR_CUSTOM_HEADER, 0,
+                UserHandle.USER_CURRENT) == 1;
     }
 
     private void updateNavBackDrop(Configuration newConfig) {
