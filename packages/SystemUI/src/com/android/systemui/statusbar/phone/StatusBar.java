@@ -552,6 +552,8 @@ public class StatusBar extends SystemUI implements DemoMode,
     protected NotificationRemoteInputManager mRemoteInputManager;
     private boolean mWallpaperSupported;
 
+    private boolean mChargingAnimation;
+
     private boolean mPocketJudgeAllowFP;
 
     private boolean mWallpaperSupportsAmbientMode;
@@ -4671,6 +4673,14 @@ public class StatusBar extends SystemUI implements DemoMode,
         return mDeviceInteractive;
     }
 
+    private void updateChargingAnimation() {
+        mChargingAnimation = Settings.System.getIntForUser(mContext.getContentResolver(),
+                Settings.System.LOCKSCREEN_CHARGING_ANIMATION, 0, UserHandle.USER_CURRENT) == 1;
+        if (mKeyguardIndicationController != null) {
+            mKeyguardIndicationController.updateChargingIndication(mChargingAnimation);
+        }
+    }
+
     private final BroadcastReceiver mBannerActionBroadcastReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
@@ -5052,6 +5062,9 @@ public class StatusBar extends SystemUI implements DemoMode,
             resolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.POCKET_JUDGE_ALLOW_FP),
                     false, this, UserHandle.USER_ALL);
+           resolver.registerContentObserver(Settings.System.getUriFor(
+                    Settings.System.LOCKSCREEN_CHARGING_ANIMATION),
+                    false, this, UserHandle.USER_ALL);
         }
 
         @Override
@@ -5059,6 +5072,9 @@ public class StatusBar extends SystemUI implements DemoMode,
             if (uri.equals(Settings.System.getUriFor(
                     Settings.System.POCKET_JUDGE_ALLOW_FP))) {
                 updatePocketJudgeFP();
+             } else if (uri.equals(Settings.System.getUriFor(
+                    Settings.System.LOCKSCREEN_CHARGING_ANIMATION))) {
+                updateChargingAnimation();
             }
             super.onChange(selfChange, uri);
             if (uri.equals(Settings.System.getUriFor(
@@ -5084,6 +5100,7 @@ public class StatusBar extends SystemUI implements DemoMode,
             updateBlurVisibility();
             updateCorners();
             updatePocketJudgeFP();
+            updateChargingAnimation();
         }
     }
 
