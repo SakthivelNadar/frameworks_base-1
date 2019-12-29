@@ -84,7 +84,8 @@ LOCAL_REQUIRED_MODULES := \
 	IconPackRoundedPixelLauncherOverlay \
 	IconPackRoundedPixelThemePickerOverlay \
 	IconPackRoundedSettingsOverlay \
-	IconPackRoundedSystemUIOverlay \
+	IconPackRoundedSystemUIOverla \
+	IconShapeHexagonOverlay \
 	IconShapeRoundedRectOverlay \
         IconShapeSquareOverlay \
         IconShapeCylinderOverlay \
