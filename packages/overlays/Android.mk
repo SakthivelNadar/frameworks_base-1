@@ -50,7 +50,8 @@ LOCAL_REQUIRED_MODULES := \
 	IconPackRoundedSettingsOverlay \
 	IconPackRoundedSystemUIOverlay \
 	IconShapeRoundedRectOverlay \
-	IconShapeSquareOverlay \
+        IconShapeSquareOverlay \
+        IconShapeCylinderOverlay \
 	IconShapeSquircleOverlay \
 	IconShapeTeardropOverlay \
 	NavigationBarMode3ButtonOverlay \
