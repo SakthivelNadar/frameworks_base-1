@@ -38,6 +38,7 @@ import android.util.TypedValue;
 import android.view.View;
 import android.widget.GridLayout;
 import android.widget.LinearLayout;
+import android.widget.TextClock;
 import android.widget.TextView;
 
 import androidx.core.graphics.ColorUtils;
@@ -65,6 +66,7 @@ public class KeyguardStatusView extends GridLayout implements
     private TextView mLogoutView;
     private KeyguardClockSwitch mClockView;
     private TextView mOwnerInfo;
+    private TextClock mDefaultClockView;
     private KeyguardSliceView mKeyguardSlice;
     private View mNotificationIcons;
     private View mKeyguardSliceView;
@@ -717,6 +719,10 @@ public class KeyguardStatusView extends GridLayout implements
                 Settings.Secure.LOCKSCREEN_CLOCK_SELECTION, 2, UserHandle.USER_CURRENT);
 
         mClockView = findViewById(R.id.keyguard_clock_container);
+		mDefaultClockView = findViewById(R.id.default_clock_view);
+        if (mClockSelection == 5 || mClockSelection == 6
+                || mClockSelection == 7 || mClockSelection == 8)
+            mDefaultClockView.setLineSpacing(0, 0.8f);
 
         switch (mClockSelection) {
             case 1: // hidden
