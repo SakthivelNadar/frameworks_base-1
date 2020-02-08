@@ -5672,7 +5672,7 @@ public final class Settings {
         public static final String QS_PANEL_BG_ALPHA = "qs_panel_bg_alpha";
 
         /**
-         * Defines the screen-off animation to display
+         *
          * @hide
          */
         public static final String SCREEN_OFF_ANIMATION = "screen_off_animation";
@@ -5789,6 +5789,12 @@ public final class Settings {
 
         /** @hide */
         public static final Validator VOLTE_ICON_STYLE_VALIDATOR = ANY_INTEGER_VALIDATOR;
+ 
+        /**
+         * FOD recognizing animation picker
+         * @hide
+         */
+        public static final String FOD_ANIM = "fod_anim";
 
         /**
          * Settings to backup. This is here so that it's in the same place as the settings
