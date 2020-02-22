@@ -40,6 +40,28 @@ public class FODAnimation extends ImageView {
     private WindowManager mWindowManager;
     private boolean mIsKeyguard;
 
+    private int mSelectedAnim;
+    private final int[] ANIMATION_STYLES = {
+        R.drawable.fod_miui_normal_recognizing_anim,
+        R.drawable.fod_miui_aod_recognizing_anim,
+        R.drawable.fod_miui_light_recognizing_anim,
+        R.drawable.fod_miui_pop_recognizing_anim,
+        R.drawable.fod_miui_pulse_recognizing_anim,
+        R.drawable.fod_miui_pulse_recognizing_white_anim,
+        R.drawable.fod_miui_rhythm_recognizing_anim,
+        R.drawable.fod_op_cosmos_recognizing_anim,
+        R.drawable.fod_op_mclaren_recognizing_anim,
+        R.drawable.fod_op_stripe_recognizing_anim,
+        R.drawable.fod_op_wave_recognizing_anim,
+        R.drawable.fod_pureview_dna_recognizing_anim,
+        R.drawable.fod_pureview_future_recognizing_anim,
+        R.drawable.fod_pureview_halo_ring_recognizing_anim,
+        R.drawable.fod_pureview_molecular_recognizing_anim,
+        R.drawable.fod_blue_firework_recognizing_anim,
+        R.drawable.fod_coloros7_1_recognizing_anim,
+        R.drawable.fod_coloros7_2_recognizing_anim
+    };
+
     public FODAnimation(Context context, int mPositionX, int mPositionY) {
         super(context);
 
@@ -58,7 +80,14 @@ public class FODAnimation extends ImageView {
         mAnimParams.y = mPositionY - (mAnimationSize / 2);
 
         setScaleType(ImageView.ScaleType.CENTER_INSIDE);
-        setBackgroundResource(R.drawable.fod_default_touch_animation);
+        update();
+    }
+
+    public void update() {
+        mSelectedAnim = Settings.System.getInt(mContext.getContentResolver(),
+                Settings.System.FOD_ANIM, 0);
+
+        setBackgroundResource(ANIMATION_STYLES[mSelectedAnim]);
         recognizingAnim = (AnimationDrawable) getBackground();
     }
 
@@ -73,10 +102,8 @@ public class FODAnimation extends ImageView {
     public void showFODanimation() {
         if (mAnimParams != null && !mShowing && mIsKeyguard) {
             mShowing = true;
-            if (this.getWindowToken() == null){
-                mWindowManager.addView(this, mAnimParams);
-                mWindowManager.updateViewLayout(this, mAnimParams);
-            }
+            mWindowManager.addView(this, mAnimParams);
+            mWindowManager.updateViewLayout(this, mAnimParams);
             recognizingAnim.start();
         }
     }
