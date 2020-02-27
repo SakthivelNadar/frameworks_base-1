@@ -5787,7 +5787,7 @@ public final class Settings {
 
         /** @hide */
         private static final Validator FOD_ANIM_VALIDATOR =
-                new SettingsValidators.InclusiveIntegerRangeValidator(0, 17);
+                new SettingsValidators.InclusiveIntegerRangeValidator(0, 18);
 
         /**
          * Whether to use new QS panel bg tint or not
