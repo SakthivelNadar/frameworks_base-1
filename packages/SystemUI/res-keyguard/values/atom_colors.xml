@@ -16,4 +16,7 @@
     <color name="date_style_system_bg">@*android:color/background_material_dark</color>
     <color name="date_style_system_accent_follow">@*android:color/transparent</color>
 
+    <!-- Allow devices to hide black gradient behind QS Panel -->
+    <bool name="config_hideQSBlackGradient">true</bool>
+
 </resources>
