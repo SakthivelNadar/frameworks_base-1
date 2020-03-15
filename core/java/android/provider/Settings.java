@@ -5864,6 +5864,9 @@ public final class Settings {
          */
         public static final String LOCKSCREEN_CHARGING_ANIMATION_STYLE = "lockscreen_charging_animation_style";
 
+        private static final Validator LOCKSCREEN_CHARGING_ANIMATION_STYLE_VALIDATOR =
+                new SettingsValidators.InclusiveIntegerRangeValidator(0, 5);
+
         /**
          * Settings to backup. This is here so that it's in the same place as the settings
          * keys and easy to update.
@@ -5947,6 +5950,7 @@ public final class Settings {
             QS_PANEL_BG_USE_NEW_TINT,
             ATOM_FOOTER_TEXT_SHOW,
             ATOM_FOOTER_TEXT_STRING,
+            LOCKSCREEN_CHARGING_ANIMATION_STYLE,
         };
 
         /**
@@ -6387,6 +6391,7 @@ public final class Settings {
             VALIDATORS.put(QS_PANEL_BG_USE_NEW_TINT, QS_PANEL_BG_USE_NEW_TINT_VALIDATOR);
             VALIDATORS.put(ATOM_FOOTER_TEXT_SHOW, ATOM_FOOTER_TEXT_SHOW_VALIDATOR);
             VALIDATORS.put(ATOM_FOOTER_TEXT_STRING, ATOM_FOOTER_TEXT_STRING_VALIDATOR);
+            VALIDATORS.put(LOCKSCREEN_CHARGING_ANIMATION_STYLE, LOCKSCREEN_CHARGING_ANIMATION_STYLE_VALIDATOR);
         }
 
         /**
