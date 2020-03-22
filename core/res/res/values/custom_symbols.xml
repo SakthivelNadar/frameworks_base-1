@@ -181,4 +181,12 @@
   <java-symbol type="anim" name="slide_in_left_no_fade" />
   <java-symbol type="anim" name="slide_out_right_no_fade" />
 
+    <!-- Gradients Shit -->
+    <java-symbol type="color" name="gradient_start_light" />
+    <java-symbol type="color" name="gradient_start_dark" />
+    <java-symbol type="color" name="gradient_end_light" />
+    <java-symbol type="color" name="gradient_end_dark" />
+    <java-symbol type="color" name="gradient_start" />
+    <java-symbol type="color" name="gradient_end" />
+
 </resources>
