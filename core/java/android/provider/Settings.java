@@ -5934,6 +5934,14 @@ public final class Settings {
                 new SettingsValidators.InclusiveIntegerRangeValidator(0, 3);
 
         /**
+         * Controls whether to show R style notification headers
+         * @hide
+         */
+        public static final String NOTIFICATION_HEADERS = "notification_headers";
+
+        private static final Validator NOTIFICATION_HEADERS_VALIDATOR = BOOLEAN_VALIDATOR;
+
+        /**
          * Settings to backup. This is here so that it's in the same place as the settings
          * keys and easy to update.
          *
@@ -6023,6 +6031,7 @@ public final class Settings {
             OMNI_STATUS_BAR_CUSTOM_HEADER_PROVIDER,
             OMNI_STATUS_BAR_CUSTOM_HEADER_IMAGE,
             OMNI_STATUS_BAR_FILE_HEADER_IMAGE,
+            NOTIFICATION_HEADERS,
         };
 
         /**
@@ -6476,6 +6485,7 @@ public final class Settings {
             VALIDATORS.put(NETWORK_TRAFFIC_LOCATION, NETWORK_TRAFFIC_LOCATION_VALIDATOR);
             VALIDATORS.put(NETWORK_TRAFFIC_AUTOHIDE, NETWORK_TRAFFIC_AUTOHIDE_VALIDATOR);
             VALIDATORS.put(NETWORK_TRAFFIC_UNITS, NETWORK_TRAFFIC_UNITS_VALIDATOR);
+            VALIDATORS.put(NOTIFICATION_HEADERS, NOTIFICATION_HEADERS_VALIDATOR);
         }
 
         /**
