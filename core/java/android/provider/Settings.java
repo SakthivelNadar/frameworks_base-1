@@ -5600,12 +5600,6 @@ public final class Settings {
         public static final String BATTERY_BAR_USE_GRADIENT_COLOR = "battery_bar_use_gradient_color";
 
         /**
-         * Some creation simillar to samsung OneUI
-         * @hide
-         */
-        public static final String SETTINGS_SPACER = "settings_spacer";
-
-        /**
          * Change fonts for the system lockscreen clock widget
          *
          * @hide
