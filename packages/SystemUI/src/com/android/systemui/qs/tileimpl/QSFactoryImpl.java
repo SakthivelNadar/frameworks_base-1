@@ -34,6 +34,7 @@ import com.android.systemui.qs.tiles.BluetoothTile;
 import com.android.systemui.qs.tiles.CaffeineTile;
 import com.android.systemui.qs.tiles.CastTile;
 import com.android.systemui.qs.tiles.CellularTile;
+import com.android.systemui.qs.tiles.PowerShareTile;
 import com.android.systemui.qs.tiles.ColorInversionTile;
 import com.android.systemui.qs.tiles.DataSaverTile;
 import com.android.systemui.qs.tiles.DndTile;
@@ -88,6 +89,7 @@ public class QSFactoryImpl implements QSFactory {
     private final Provider<UiModeNightTile> mUiModeNightTileProvider;
     private final Provider<LteTile> mLteTileProvider;
     private final Provider<DataSwitchTile> mDataSwitchTileProvider;
+    private final Provider<PowerShareTile> mPowerShareTileProvider;
 
     private QSTileHost mHost;
 
@@ -112,7 +114,8 @@ public class QSFactoryImpl implements QSFactory {
             Provider<GarbageMonitor.MemoryTile> memoryTileProvider,
             Provider<UiModeNightTile> uiModeNightTileProvider,
             Provider<LteTile> lteTileProvider,
-            Provider<DataSwitchTile> dataSwitchTileProvider) {
+            Provider<DataSwitchTile> dataSwitchTileProvider,
+            Provider<PowerShareTile> powerShareTileProvider) {
         mWifiTileProvider = wifiTileProvider;
         mBluetoothTileProvider = bluetoothTileProvider;
         mCellularTileProvider = cellularTileProvider;
@@ -134,6 +137,7 @@ public class QSFactoryImpl implements QSFactory {
         mUiModeNightTileProvider = uiModeNightTileProvider;
         mLteTileProvider = lteTileProvider;
         mDataSwitchTileProvider = dataSwitchTileProvider;
+        mPowerShareTileProvider = powerShareTileProvider;
     }
 
     public void setHost(QSTileHost host) {
@@ -191,6 +195,9 @@ public class QSFactoryImpl implements QSFactory {
                 return mLteTileProvider.get();
             case "dataswitch":
                 return mDataSwitchTileProvider.get();
+            // Custom tiles.
+            case "powershare":
+                return mPowerShareTileProvider.get();
         }
 
         // Intent tiles.
