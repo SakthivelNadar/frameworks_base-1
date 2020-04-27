@@ -5848,6 +5848,15 @@ public final class Settings {
          /** @hide */
         private static final Validator ATOM_FOOTER_TEXT_SHOW_VALIDATOR =
                 BOOLEAN_VALIDATOR;
+    
+      /**
+         * QS footer text
+         * @hide
+         */
+        public static final String ATOM_FOOTER_TEXT_STRING = "atom_footer_text_string";
+        /** @hide */
+        public static final Validator ATOM_FOOTER_TEXT_STRING_VALIDATOR =
+                ANY_STRING_VALIDATOR;
 
         /**
          * Settings to backup. This is here so that it's in the same place as the settings
@@ -5931,6 +5940,7 @@ public final class Settings {
             FOD_ANIM,
             QS_PANEL_BG_USE_NEW_TINT,
             ATOM_FOOTER_TEXT_SHOW,
+            ATOM_FOOTER_TEXT_STRING,
         };
 
         /**
@@ -6370,6 +6380,7 @@ public final class Settings {
             VALIDATORS.put(FOD_ANIM, FOD_ANIM_VALIDATOR);
             VALIDATORS.put(QS_PANEL_BG_USE_NEW_TINT, QS_PANEL_BG_USE_NEW_TINT_VALIDATOR);
             VALIDATORS.put(ATOM_FOOTER_TEXT_SHOW, ATOM_FOOTER_TEXT_SHOW_VALIDATOR);
+            VALIDATORS.put(ATOM_FOOTER_TEXT_STRING, ATOM_FOOTER_TEXT_STRING_VALIDATOR);
         }
 
         /**
