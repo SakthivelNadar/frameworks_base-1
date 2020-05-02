@@ -5903,6 +5903,36 @@ public final class Settings {
          */
         public static final String SMART_CHARGING_RESUME_LEVEL = "smart_charging_resume_level";
 
+
+        /**
+         * Wheter to show network traffic indicator
+         * @hide
+         */
+        public static final String NETWORK_TRAFFIC_LOCATION = "network_traffic_location";
+
+        /** @hide */
+        public static final Validator NETWORK_TRAFFIC_LOCATION_VALIDATOR =
+                new SettingsValidators.InclusiveIntegerRangeValidator(0, 2);
+
+        /**
+         * Whether or not to hide the network traffic indicator when there is no activity
+         * @hide
+         */
+        public static final String NETWORK_TRAFFIC_AUTOHIDE = "network_traffic_autohide";
+
+        /** @hide */
+        public static final Validator NETWORK_TRAFFIC_AUTOHIDE_VALIDATOR = BOOLEAN_VALIDATOR;
+
+        /**
+         * Measurement unit preference for network traffic
+         * @hide
+         */
+        public static final String NETWORK_TRAFFIC_UNITS = "network_traffic_units";
+
+        /** @hide */
+        public static final Validator NETWORK_TRAFFIC_UNITS_VALIDATOR =
+                new SettingsValidators.InclusiveIntegerRangeValidator(0, 3);
+
         /**
          * Settings to backup. This is here so that it's in the same place as the settings
          * keys and easy to update.
@@ -6230,6 +6260,9 @@ public final class Settings {
             PRIVATE_SETTINGS.add(OMNI_STATUS_BAR_CUSTOM_HEADER_PROVIDER);
             PRIVATE_SETTINGS.add(OMNI_STATUS_BAR_CUSTOM_HEADER_IMAGE);
             PRIVATE_SETTINGS.add(OMNI_STATUS_BAR_FILE_HEADER_IMAGE);
+            PRIVATE_SETTINGS.add(NETWORK_TRAFFIC_LOCATION);
+            PRIVATE_SETTINGS.add(NETWORK_TRAFFIC_AUTOHIDE);
+            PRIVATE_SETTINGS.add(NETWORK_TRAFFIC_UNITS);
         }
 
         /**
@@ -6440,6 +6473,9 @@ public final class Settings {
             VALIDATORS.put(OMNI_STATUS_BAR_CUSTOM_HEADER_PROVIDER, OMNI_STATUS_BAR_CUSTOM_HEADER_PROVIDER_VALIDATOR);
             VALIDATORS.put(OMNI_STATUS_BAR_CUSTOM_HEADER_IMAGE, OMNI_STATUS_BAR_CUSTOM_HEADER_IMAGE_VALIDATOR);
             VALIDATORS.put(OMNI_STATUS_BAR_FILE_HEADER_IMAGE, OMNI_STATUS_BAR_FILE_HEADER_IMAGE_VALIDATOR);
+            VALIDATORS.put(NETWORK_TRAFFIC_LOCATION, NETWORK_TRAFFIC_LOCATION_VALIDATOR);
+            VALIDATORS.put(NETWORK_TRAFFIC_AUTOHIDE, NETWORK_TRAFFIC_AUTOHIDE_VALIDATOR);
+            VALIDATORS.put(NETWORK_TRAFFIC_UNITS, NETWORK_TRAFFIC_UNITS_VALIDATOR);
         }
 
         /**
