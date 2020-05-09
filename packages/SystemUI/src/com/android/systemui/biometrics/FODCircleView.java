@@ -278,8 +278,6 @@ public class FODCircleView extends ImageView implements ConfigurationListener {
 
         mFodScreenOffHandler = fodScreenOffHandler;
 
-        setScaleType(ScaleType.CENTER);
-
         IFingerprintInscreen daemon = getFingerprintInScreenDaemon();
         if (daemon == null) {
             throw new RuntimeException("Unable to get IFingerprintInscreen");
