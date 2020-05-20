@@ -5956,11 +5956,11 @@ public final class Settings {
          * Measurement unit preference for network traffic
          * @hide
          */
-        public static final String NETWORK_TRAFFIC_UNITS = "network_traffic_units";
+        public static final String NETWORK_TRAFFIC_UNIT_TYPE = "network_traffic_unit_type";
 
         /** @hide */
-        public static final Validator NETWORK_TRAFFIC_UNITS_VALIDATOR =
-                new SettingsValidators.InclusiveIntegerRangeValidator(0, 3);
+        public static final Validator NETWORK_TRAFFIC_UNIT_TYPE_VALIDATOR =
+                new SettingsValidators.InclusiveIntegerRangeValidator(0, 1);
 
         /**
          * Controls whether to show R style notification headers
@@ -6490,7 +6490,6 @@ public final class Settings {
             PRIVATE_SETTINGS.add(OMNI_STATUS_BAR_FILE_HEADER_IMAGE);
             PRIVATE_SETTINGS.add(NETWORK_TRAFFIC_LOCATION);
             PRIVATE_SETTINGS.add(NETWORK_TRAFFIC_AUTOHIDE);
-            PRIVATE_SETTINGS.add(NETWORK_TRAFFIC_UNITS);
             PRIVATE_SETTINGS.add(COLOR_BUCKET_OVERLAY);
             PRIVATE_SETTINGS.add(LOCKSCREEN_TRANSLUCENT_NOTIFICATIONS_BG_ENABLED);
             PRIVATE_SETTINGS.add(QS_PANEL_BG_COLOR);
@@ -6507,6 +6506,7 @@ public final class Settings {
             PRIVATE_SETTINGS.add(LOCKSCREEN_WEATHER_SHOW_TEMP);
             PRIVATE_SETTINGS.add(LOCKSCREEN_WEATHER_SHOW_CITY);
 	    PRIVATE_SETTINGS.add(LOCKSCREEN_WEATHER_SHOW_IMAGE);
+            PRIVATE_SETTINGS.add(NETWORK_TRAFFIC_UNIT_TYPE);
         }
 
         /**
@@ -6719,7 +6719,6 @@ public final class Settings {
             VALIDATORS.put(OMNI_STATUS_BAR_FILE_HEADER_IMAGE, OMNI_STATUS_BAR_FILE_HEADER_IMAGE_VALIDATOR);
             VALIDATORS.put(NETWORK_TRAFFIC_LOCATION, NETWORK_TRAFFIC_LOCATION_VALIDATOR);
             VALIDATORS.put(NETWORK_TRAFFIC_AUTOHIDE, NETWORK_TRAFFIC_AUTOHIDE_VALIDATOR);
-            VALIDATORS.put(NETWORK_TRAFFIC_UNITS, NETWORK_TRAFFIC_UNITS_VALIDATOR);
             VALIDATORS.put(NOTIFICATION_HEADERS, NOTIFICATION_HEADERS_VALIDATOR);
             VALIDATORS.put(LOCKSCREEN_TRANSLUCENT_NOTIFICATIONS_BG_ENABLED, LOCKSCREEN_TRANSLUCENT_NOTIFICATIONS_BG_ENABLED_VALIDATOR);
             VALIDATORS.put(FORCE_EXPANDED_NOTIFICATIONS, FORCE_EXPANDED_NOTIFICATIONS_VALIDATOR);
@@ -6735,6 +6734,7 @@ public final class Settings {
             VALIDATORS.put(LOCKSCREEN_WEATHER_SHOW_TEMP, LOCKSCREEN_WEATHER_SHOW_TEMP_VALIDATOR);
             VALIDATORS.put(LOCKSCREEN_WEATHER_SHOW_CITY, LOCKSCREEN_WEATHER_SHOW_CITY_VALIDATOR);
 	    VALIDATORS.put(LOCKSCREEN_WEATHER_SHOW_IMAGE, LOCKSCREEN_WEATHER_SHOW_IMAGE_VALIDATOR);
+            VALIDATORS.put(NETWORK_TRAFFIC_UNIT_TYPE, NETWORK_TRAFFIC_UNIT_TYPE_VALIDATOR);
         }
 
         /**
