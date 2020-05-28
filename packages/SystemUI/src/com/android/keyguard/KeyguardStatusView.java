@@ -122,6 +122,7 @@ public class KeyguardStatusView extends GridLayout implements
                 mKeyguardSlice.refreshdatesize();
                 refreshOwnerInfoSize();
                 refreshOwnerInfoFont();
+                updateLsClockSettings();
                 updateSettings();
             }
         }
@@ -807,7 +808,7 @@ public class KeyguardStatusView extends GridLayout implements
         }
     }
 
-    private void updateSettings() {
+    private void updateLsClockSettings() {
         final ContentResolver resolver = getContext().getContentResolver();
 
         mClockSelection = Settings.Secure.getIntForUser(resolver,
@@ -823,6 +824,7 @@ public class KeyguardStatusView extends GridLayout implements
     }
 
     public void updateAll() {
+        updateLsClockSettings();
         updateSettings();
     }
 
