@@ -2535,6 +2535,14 @@ public class StatusBar extends SystemUI implements DemoMode,
                 navbarColorManagedByIme);
     }
 
+    protected final int getSystemUiVisibility() {
+        return mSystemUiVisibility;
+    }
+
+    protected final int getDisplayId() {
+        return mDisplayId;
+    }
+
     @Override
     public void showWirelessChargingAnimation(int batteryLevel) {
         if (mDozing || mKeyguardManager.isKeyguardLocked()) {
@@ -2568,7 +2576,7 @@ public class StatusBar extends SystemUI implements DemoMode,
     }
 
     protected BarTransitions getStatusBarTransitions() {
-        return mStatusBarView.getBarTransitions();
+        return mStatusBarWindow.getBarTransitions();
     }
 
     protected @TransitionMode int computeBarMode(int oldVis, int newVis) {
@@ -2599,8 +2607,10 @@ public class StatusBar extends SystemUI implements DemoMode,
 
     void checkBarModes() {
         if (mDemoMode) return;
-        if (mStatusBarView != null) checkBarMode(mStatusBarMode, mStatusBarWindowState,
-                getStatusBarTransitions());
+        if (mStatusBarView != null && getStatusBarTransitions() != null) {
+            checkBarMode(mStatusBarMode, mStatusBarWindowState,
+                    getStatusBarTransitions());
+        }
         mNavigationBarController.checkNavBarModes(mDisplayId);
         mNoAnimationOnNextBarModeChange = false;
     }
@@ -2618,8 +2628,8 @@ public class StatusBar extends SystemUI implements DemoMode,
     }
 
     private void finishBarAnimations() {
-        if (mStatusBarView != null) {
-            mStatusBarView.getBarTransitions().finishAnimations();
+        if (mStatusBarWindow != null && mStatusBarWindow.getBarTransitions() != null) {
+            mStatusBarWindow.getBarTransitions().finishAnimations();
         }
         mNavigationBarController.finishBarAnimations(mDisplayId);
     }
@@ -2697,8 +2707,8 @@ public class StatusBar extends SystemUI implements DemoMode,
                 Settings.Global.ZEN_MODE_OFF)));
         pw.print("  mWallpaperSupported= "); pw.println(mWallpaperSupported);
 
-        if (mStatusBarView != null) {
-            dumpBarTransitions(pw, "mStatusBarView", mStatusBarView.getBarTransitions());
+        if (mStatusBarWindow != null) {
+            dumpBarTransitions(pw, "mStatusBarWindow", mStatusBarWindow.getBarTransitions());
         }
         pw.println("  StatusBarWindowView: ");
         if (mStatusBarWindow != null) {
@@ -3361,8 +3371,8 @@ public class StatusBar extends SystemUI implements DemoMode,
                     -1;
             if (barMode != -1) {
                 boolean animate = true;
-                if (mStatusBarView != null) {
-                    mStatusBarView.getBarTransitions().transitionTo(barMode, animate);
+                if (mStatusBarWindow != null && mStatusBarWindow.getBarTransitions() != null) {
+                    mStatusBarWindow.getBarTransitions().transitionTo(barMode, animate);
                 }
                 mNavigationBarController.transitionTo(mDisplayId, barMode, animate);
             }
